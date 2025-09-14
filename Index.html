@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ALgo42 - AI/ML Student Club</title>
+  <meta name="description" content="ALgo42 is a student AI/ML club that pioneers innovation with electric blue & neon green vibes. Join us for events, projects, and learning!" />
+  <meta name="keywords" content="AI Club, ML Club, Student AI, Machine Learning, ALgo42, Artificial Intelligence, Student Projects, AI Events" />
+  <meta name="author" content="ALgo42 AI/ML Club" />
+  <link rel="icon" href="data:,">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Share+Tech+Mono&display=swap');
+
+    :root {
+      --electric-blue: #00a8ff;
+      --neon-green: #39ff14;
+      --black-bg: #0a0a0a;
+      --glow-blue: #00ccff;
+      --glow-green: #4dff4d;
+    }
+
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      background-color: var(--black-bg);
+      color: #ddd;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--electric-blue);
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    a:hover, a:focus {
+      color: var(--neon-green);
+      text-shadow:
+        0 0 8px var(--neon-green),
+        0 0 15px var(--neon-green);
+      outline: none;
+    }
+
+    header, section {
+      padding: 60px 20px 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h1,h2,h3,h4,h5,h6 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--electric-blue);
+      margin-bottom: 0.4em;
+      text-shadow:
+        0 0 5px var(--electric-blue),
+        0 0 10px var(--electric-blue);
+    }
+
+    h2 {
+      font-size: 2.5rem;
+    }
+    h3 {
+      font-size: 1.6rem;
+    }
+
+    p {
+      margin-bottom: 1.2em;
+    }
+
+    /* Nav */
+    nav {
+      background-color: #111;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 0 15px #00a8ff44;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 10px 0;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    nav li {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    nav a {
+      padding: 6px 8px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: var(--neon-green);
+      color: black;
+      box-shadow:
+        0 0 8px var(--neon-green),
+        0 0 15px var(--neon-green);
+    }
+
+    /* Hero */
+    #hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 90vh;
+      text-align: center;
+      padding: 100px 20px 80px;
+    }
+    #hero h1 {
+      font-size: 4rem;
+      margin-bottom: 0.6em;
+      letter-spacing: 0.15em;
+      color: var(--neon-green);
+      text-shadow:
+        0 0 15px var(--neon-green),
+        0 0 30px var(--neon-green),
+        0 0 45px var(--electric-blue);
+    }
+    #hero p {
+      font-size: 1.4rem;
+      max-width: 600px;
+      color: #aaffaa99;
+      text-shadow: 0 0 7px #39ff1411;
+      margin-bottom: 2em;
+    }
+    #hero .btn {
+      background: linear-gradient(45deg, var(--electric-blue), var(--neon-green));
+      border: none;
+      padding: 18px 45px;
+      border-radius: 40px;
+      font-size: 1.25rem;
+      cursor: pointer;
+      color: black;
+      font-weight: 700;
+      box-shadow:
+        0 0 10px var(--electric-blue),
+        0 0 20px var(--neon-green);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    #hero .btn:hover,
+    #hero .btn:focus {
+      color: var(--neon-green);
+      background-color: transparent;
+      border: 2px solid var(--neon-green);
+      box-shadow:
+        0 0 20px var(--neon-green),
+        0 0 40px var(--electric-blue);
+      outline: none;
+    }
+
+    /* Sections */
+    section {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    .section-header::after {
+      content: "";
+      display: block;
+      width: 120px;
+      height: 3px;
+      margin: 10px auto 0;
+      background: linear-gradient(90deg, var(--electric-blue), var(--neon-green));
+      border-radius: 50px;
+      box-shadow: 0 0 12px var(--electric-blue), 0 0 22px var(--neon-green);
+    }
+
+    /* Cards Layout for Events, Projects, Blog */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: #111;
+      color: #ddd;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow:
+        0 0 10px #00a8ff88,
+        inset 0 0 10px #00a8ff44;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .card:hover, .card:focus-within {
+      box-shadow:
+        0 0 18px var(--neon-green),
+        0 0 45px var(--electric-blue);
+      transform: translateY(-8px);
+      outline: none;
+    }
+    .card h3 {
+      margin-top: 0;
+      color: var(--neon-green);
+      text-shadow: 0 0 12px var(--neon-green);
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #a8ffa8cc;
+    }
+    .card a.read-more {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--electric-blue);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .card a.read-more:hover,
+    .card a.read-more:focus {
+      color: var(--neon-green);
+      text-shadow:
+        0 0 7px var(--neon-green),
+        0 0 15px var(--neon-green);
+      outline: none;
+    }
+
+    /* Resources list */
+    .resource-list {
+      list-style-type: none;
+      padding-left: 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .resource-list li {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      border-bottom: 1px solid #222;
+      padding-bottom: 8px;
+    }
+    .resource-list a {
+      font-weight: 600;
+      color: var(--electric-blue);
+    }
+    .resource-list a:hover,
+    .resource-list a:focus {
+      color: var(--neon-green);
+      text-shadow:
+        0 0 10px var(--neon-green);
+      outline: none;
+    }
+
+    /* Contact */
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    label {
+      font-weight: 600;
+      color: var(--electric-blue);
+      font-size: 1rem;
+      margin-bottom: 6px;
+      display: block;
+      text-shadow: 0 0 6px var(--electric-blue);
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      padding: 12px 18px;
+      background-color: #111;
+      color: #ddd;
+      border: 2px solid #222;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1rem;
+      resize: vertical;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: var(--neon-green);
+      box-shadow:
+        0 0 20px var(--neon-green),
+        0 0 40px var(--electric-blue);
+      outline: none;
+    }
+    button[type="submit"] {
+      background: linear-gradient(45deg, var(--electric-blue), var(--neon-green));
+      border: none;
+      padding: 16px 30px;
+      border-radius: 35px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: black;
+      cursor: pointer;
+      box-shadow:
+        0 0 14px var(--electric-blue),
+        0 0 28px var(--neon-green);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      color: var(--neon-green);
+      background-color: transparent;
+      box-shadow:
+        0 0 28px var(--neon-green),
+        0 0 55px var(--electric-blue);
+      border: 2px solid var(--neon-green);
+      outline: none;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.9rem;
+      color: #555;
+      border-top: 1px solid #222;
+    }
+    footer a {
+      color: var(--electric-blue);
+    }
+    footer a:hover, footer a:focus{
+      color: var(--neon-green);
+      text-shadow:
+        0 0 8px var(--neon-green),
+        0 0 18px var(--electric-blue);
+      outline: none;
+    }
+
+    /* Scroll animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 720px) {
+      #hero h1 {
+        font-size: 2.8rem;
+      }
+      #hero p {
+        font-size: 1.1rem;
+      }
+      nav ul {
+        gap: 15px;
+        font-size: 0.9rem;
+      }
+      section {
+        padding: 40px 15px;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    /* Preloader Styles */
+#loader-wrapper {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0a0a0a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#loader {
+  border: 6px solid var(--black-bg);
+  border-top: 6px solid var(--neon-green);
+  border-right: 6px solid var(--electric-blue);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+  box-shadow: 0 0 25px var(--electric-blue), 0 0 15px var(--neon-green);
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: var(--neon-green);
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px var(--electric-blue);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+  </style>
+</head>
+<body>
+  <div id="loader-wrapper">
+  <div id="loader"></div>
+  <p class="loading-text">Loading ALgo42...</p>
+</div>
+  <nav role="navigation" aria-label="Primary Navigation">
+    <ul>
+      <li><a href="#hero" tabindex="1">Home</a></li>
+      <li><a href="#about" tabindex="2">About Us</a></li>
+      <li><a href="#events" tabindex="3">Events</a></li>
+      <li><a href="#projects" tabindex="4">Projects</a></li>
+      <li><a href="#resources" tabindex="5">Resources</a></li>
+      <li><a href="#blog" tabindex="6">Blog</a></li>
+      <li><a href="#contact" tabindex="7">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header id="hero" class="fade-in" role="banner">
+    <h1>ALgo42</h1>
+    <p>Explore the frontier of AI and Machine Learning with us. Innovate. Learn. Create.</p>
+    <a href="#about" class="btn" tabindex="8" aria-label="Learn more about ALgo42">Discover More</a>
+  </header>
+
+  <main>
+    <section id="about" class="fade-in" tabindex="-1">
+      <div class="section-header">
+        <h2>About Us</h2>
+      </div>
+      <p>ALgo42 is a student-led AI/ML club dedicated to fostering innovation, collaboration, and learning in artificial intelligence and machine learning. We believe in hands-on projects, insightful events, and sharing knowledge to shape the future.</p>
+      <p>Join us to collaborate with like-minded peers, participate in hackathons, attend talks by AI leaders, and build cutting-edge projects.</p>
+    </section>
+
+    <section id="events" class="fade-in" tabindex="-1">
+      <div class="section-header">
+        <h2>Events</h2>
+      </div>
+      <div class="card-grid" role="list">
+        <article class="card" role="listitem" tabindex="0" aria-label="Upcoming AI Workshop">
+          <h3>AI Workshop</h3>
+          <p>Date: August 15, 2024</p>
+          <p>Interactive sessions on deep learning fundamentals and cutting-edge research trends.</p>
+          <a href="#" class="read-more" tabindex="0" aria-label="Read more about AI Workshop">Read More</a>
+        </article>
+        <article class="card" role="listitem" tabindex="0" aria-label="Annual ML Hackathon">
+          <h3>Annual ML Hackathon</h3>
+          <p>Date: September 28-29, 2024</p>
+          <p>Two days of intense coding and creativity building AI-driven solutions to real problems.</p>
+          <a href="#" class="read-more" tabindex="0" aria-label="Read more about Annual ML Hackathon">Read More</a>
+        </article>
+        <article class="card" role="listitem" tabindex="0" aria-label="Guest Speaker Series: AI Ethics">
+          <h3>Guest Speaker Series: AI Ethics</h3>
+          <p>Date: October 10, 2024</p>
+          <p>Join leading experts discussing ethical considerations in AI development and deployment.</p>
+          <a href="#" class="read-more" tabindex="0" aria-label="Read more about AI Ethics Speaker Series">Read More</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="fade-in" tabindex="-1">
+      <div class="section-header">
+        <h2>Projects</h2>
+      </div>
+      <div class="card-grid" role="list">
+        <article class="card" role="listitem" tabindex="0" aria-label="Project: AI Chatbot for Campus">
+          <h3>AI Chatbot for Campus</h3>
+          <p>An intelligent chatbot assistant to help students navigate campus events and resources with natural language processing.</p>
+          <a href="#" class="read-more" tabindex="0" aria-label="Discover more about AI Chatbot for Campus project">Discover More</a>
+        </article>
+        <article class="card" role="listitem" tabindex="0" aria-label="Project: ML-based Traffic Prediction">
+          <h3>ML-based Traffic Prediction</h3>
+          <p>Using machine learning to model and predict campus traffic patterns for optimized scheduling and safety.</p>
+          <a href="#" class="read-more" tabindex="0" aria-label="Discover more about ML-based Traffic Prediction project">Discover More</a>
+        </article>
+        <article class="card" role="listitem" tabindex="0" aria-label="Project: AI-Driven Personalized Tutoring">
+          <h3>AI-Driven Personalized Tutoring</h3>
+          <p>Custom AI recommendations for personalized study plans to boost learning outcomes for club members.</p>
+          <a href="#" class="read-more" tabindex="0" aria-label="Discover more about AI-Driven Personalized Tutoring project">Discover More</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="resources" class="fade-in" tabindex="-1">
+      <div class="section-header">
+        <h2>Resources</h2>
+      </div>
+      <ul class="resource-list" aria-label="List of learning resources">
+        <li><a href="https://www.tensorflow.org/" target="_blank" rel="noopener noreferrer" tabindex="0">TensorFlow - Machine Learning Framework</a></li>
+        <li><a href="https://pytorch.org/" target="_blank" rel="noopener noreferrer" tabindex="0">PyTorch - Deep Learning Library</a></li>
+        <li><a href="https://www.kaggle.com/" target="_blank" rel="noopener noreferrer" tabindex="0">Kaggle - Competitions and Datasets</a></li>
+        <li><a href="https://colab.research.google.com/" target="_blank" rel="noopener noreferrer" tabindex="0">Google Colab - Free Cloud Notebooks</a></li>
+        <li><a href="https://fast.ai/" target="_blank" rel="noopener noreferrer" tabindex="0">fast.ai - Practical Deep Learning Courses</a></li>
+      </ul>
+    </section>
+
+    <section id="blog" class="fade-in" tabindex="-1">
+      <div class="section-header">
+        <h2>Blog</h2>
+      </div>
+      <div class="card-grid" role="list">
+        <article class="card" role="listitem" tabindex="0" aria-label="Blog post: Latest trends in AI">
+          <h3>Latest trends in AI</h3>
+          <p>Dive into the forefront of AI innovations, from generative models to reinforcement learning breakthroughs.</p>
+          <a href="#" class="read-more" tabindex="0" aria-label="Read blog about latest trends in AI">Read More</a>
+        </article>
+        <article class="card" role="listitem" tabindex="0" aria-label="Blog post: Building robust ML models">
+          <h3>Building robust ML models</h3>
+          <p>Tips and best practices for training, tuning, and deploying machine learning models that perform well in real-world scenarios.</p>
+          <a href="#" class="read-more" tabindex="0" aria-label="Read blog about building robust ML models">Read More</a>
+        </article>
+        <article class="card" role="listitem" tabindex="0" aria-label="Blog post: Women in AI - inspiring stories">
+          <h3>Women in AI - inspiring stories</h3>
+          <p>A tribute to women leaders and pioneers driving innovation and diversity in the AI/ML community.</p>
+          <a href="#" class="read-more" tabindex="0" aria-label="Read blog about women in AI inspiring stories">Read More</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="fade-in" tabindex="-1" aria-labelledby="contact-title">
+      <div class="section-header">
+        <h2 id="contact-title">Contact Us</h2>
+      </div>
+      <form action="https://formspree.io/f/movwkdvy" method="POST">
+        <p id="contact-desc" style="text-align:center; max-width:600px; margin:auto; margin-bottom:25px; color:#aaffaa88;">
+          Interested in joining ALgo42 or want more info? Drop us a message!
+        </p>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required aria-required="true" />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="your.email@example.com" required aria-required="true" />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required aria-required="true"></textarea>
+
+        <button type="submit" aria-label="Send message to ALgo42">Send</button>
+        <p id="form-status" role="alert" aria-live="polite" style="margin-top:15px; text-align:center;"></p>
+      </form>
+    </section>
+  </main>
+<script>
+  window.addEventListener("load", () => {
+    const loader = document.getElementById("loader-wrapper");
+    loader.style.opacity = "0";
+    loader.style.transition = "opacity 0.6s ease";
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 600);
+  });
+</script>
+
+  <footer>
+    <p>&copy; 2024 ALgo42 AI/ML Student Club. All Rights Reserved. | <a href="https://github.com/algo42" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+  </footer>
+
+  <script>
+    // Scroll animation on elements with fade-in class
+    const fadeEls = document.querySelectorAll('.fade-in');
+
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const fadeInOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    fadeEls.forEach(el => {
+      fadeInOnScroll.observe(el);
+    });
+
+    // Form submission simulation (no backend)
+    const form = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      formStatus.textContent = '';
+      if (!form.checkValidity()) {
+        formStatus.style.color = 'var(--neon-green)';
+        formStatus.textContent = 'Please fill out all fields correctly.';
+        return;
+      }
+
+      // Fake async submission
+      formStatus.style.color = 'var(--electric-blue)';
+      formStatus.textContent = 'Sending message...';
+
+      setTimeout(() => {
+        formStatus.style.color = 'var(--neon-green)';
+        formStatus.textContent = 'Thank you for contacting ALgo42! We will get back to you soon.';
+        form.reset();
+      }, 1500);
+    });
+
+    // Accessibility improvement: highlight focused cards for keyboard users
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('focus', () => {
+        card.style.outline = '2px solid var(--neon-green)';
+        card.style.outlineOffset = '3px';
+      });
+      card.addEventListener('blur', () => {
+        card.style.outline = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
