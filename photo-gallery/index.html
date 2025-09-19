@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Photo Gallery</h1>
+            <div class="upload-section">
+                <input type="file" id="photoInput" accept="image/*" multiple>
+                <button id="uploadBtn" class="btn-primary">Upload Photos</button>
+            </div>
+        </header>
+        
+        <div class="gallery-controls">
+            <div class="search-filter">
+                <input type="text" id="searchInput" placeholder="Search photos...">
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="nature">Nature</option>
+                    <option value="portraits">Portraits</option>
+                    <option value="architecture">Architecture</option>
+                    <option value="events">Events</option>
+                    <option value="misc">Miscellaneous</option>
+                </select>
+                <button id="gridViewBtn" class="view-btn active">Grid</button>
+                <button id="listViewBtn" class="view-btn">List</button>
+            </div>
+        </div>
+        
+        <div id="photoGallery" class="photo-gallery grid-view">
+            <!-- Photos will be dynamically loaded here -->
+        </div>
+        
+        <div class="load-more-section">
+            <button id="loadMoreBtn" class="btn-secondary">Load More Photos</button>
+        </div>
+    </div>
+    
+    <!-- Photo Modal -->
+    <div id="photoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="photo-info">
+                <h3 id="photoTitle">Photo Title</h3>
+                <p id="photoDescription">Photo description goes here...</p>
+                <div class="photo-meta">
+                    <span id="photoDate">Date: </span>
+                    <span id="photoCategory">Category: </span>
+                </div>
+                <div class="photo-actions">
+                    <button id="editBtn" class="btn-secondary">Edit Info</button>
+                    <button id="deleteBtn" class="btn-danger">Delete</button>
+                    <button id="downloadBtn" class="btn-primary">Download</button>
+                </div>
+            </div>
+        </div>
+        <button class="nav-btn prev-btn" id="prevBtn">&lt;</button>
+        <button class="nav-btn next-btn" id="nextBtn">&gt;</button>
+    </div>
+    
+    <!-- Edit Photo Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Photo Information</h2>
+            <form id="editForm">
+                <input type="text" id="editTitle" placeholder="Photo Title">
+                <textarea id="editDescription" placeholder="Photo Description"></textarea>
+                <select id="editCategory">
+                    <option value="nature">Nature</option>
+                    <option value="portraits">Portraits</option>
+                    <option value="architecture">Architecture</option>
+                    <option value="events">Events</option>
+                    <option value="misc">Miscellaneous</option>
+                </select>
+                <div class="form-actions">
+                    <button type="button" id="cancelEdit" class="btn-secondary">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
