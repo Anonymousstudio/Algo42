@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Event Calendar</h1>
+            <button id="addEventBtn" class="btn-primary">Add Event</button>
+        </header>
+        
+        <div class="calendar-controls">
+            <button id="prevBtn">&lt;</button>
+            <span id="monthYear"></span>
+            <button id="nextBtn">&gt;</button>
+        </div>
+        
+        <div class="calendar-grid" id="calendarGrid">
+            <div class="day-header">Sun</div>
+            <div class="day-header">Mon</div>
+            <div class="day-header">Tue</div>
+            <div class="day-header">Wed</div>
+            <div class="day-header">Thu</div>
+            <div class="day-header">Fri</div>
+            <div class="day-header">Sat</div>
+        </div>
+        
+        <div class="event-list">
+            <h3>Upcoming Events</h3>
+            <div id="eventsList"></div>
+        </div>
+    </div>
+    
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Event</h2>
+            <form id="eventForm">
+                <input type="text" id="eventTitle" placeholder="Event Title" required>
+                <input type="date" id="eventDate" required>
+                <input type="time" id="eventTime" required>
+                <textarea id="eventDescription" placeholder="Description"></textarea>
+                <button type="submit" class="btn-primary">Save Event</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
